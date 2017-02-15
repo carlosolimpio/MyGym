@@ -1,9 +1,9 @@
 package dados;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import classesBasicas.Treinador;
-import excecoes.ObjetoNaoExisteException;
 
 public interface IRepositorioTreinador {
 	
@@ -15,5 +15,8 @@ public interface IRepositorioTreinador {
 
 	Treinador procurar(long cpf);
 	
+	/*--------------------BANCO DE DADOS-----------------------*/
+	
+	void bdCadastrar(Treinador treinador, Connection conexao) throws SQLException;
 	
 }

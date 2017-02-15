@@ -1,5 +1,7 @@
 package br.ufrpe.sistema_MyGym;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 import negocios.CadastroAula;
@@ -11,6 +13,7 @@ import classesBasicas.Aula;
 import classesBasicas.Avaliacao;
 import classesBasicas.Cliente;
 import classesBasicas.Login;
+import classesBasicas.Presenca;
 import classesBasicas.Treinador;
 import classesBasicas.Treino;
 import excecoes.ObjetoJaExisteException;
@@ -26,8 +29,7 @@ public class Principal {
 	private static CadastroTreino cadastroTreino = new CadastroTreino();
 	private static CadastroPessoa cadastrarLogin = new CadastroPessoa();
 
-	public Principal(CadastroAula cadastroAula,
-			CadastroCliente cadastroCliente, CadastroTreinador cadastroTreinador) {
+	public Principal(CadastroAula cadastroAula, CadastroCliente cadastroCliente, CadastroTreinador cadastroTreinador) {
 
 	}
 
@@ -63,7 +65,7 @@ public class Principal {
                         case 1: // Administrar Cliente
                         		int opcao2; 
                                 do{
-	                                System.out.println("0- Voltar \n1-Cadastrar Cliente \n2-Remover Cliente \n3-Exibir Cliente ");
+	                                System.out.println("0- Voltar \n1-Cadastrar Cliente \n2-Remover Cliente \n3-Exibir Cliente \n4- Mensalidade- Pagar");
 	                                opcao2 = ler.nextInt();
 	                                switch (opcao2) {// Menu Administrar Cliente - 2
 	                                case 0:
@@ -83,7 +85,7 @@ public class Principal {
 	 
 	                                        ler.nextLine();
 	 
-	                                        System.out.println("\nEndereço: ");
+	                                        System.out.println("\nEndereï¿½o: ");
 	                                        String endereco;
 	                                        endereco = ler.nextLine();
 	 
@@ -120,11 +122,11 @@ public class Principal {
 	                                        String senha;
 	                                        senha = ler.nextLine();
 	                                
-	                                        System.out.println("\n\n--CADASTRO CLIENTE (Avaliação Física)-- \nANAMNESE\n\nObjetivos relação à atividade física?\n");
+	                                        System.out.println("\n\n--CADASTRO CLIENTE (Avaliaï¿½ï¿½o Fï¿½sica)-- \nANAMNESE\n\nObjetivos relaï¿½ï¿½o ï¿½ atividade fï¿½sica?\n");
 	                                        String objetivo;
 	                                        objetivo = ler.nextLine();
 	 
-	                                        System.out.println("Pratica Atividade física atualmente?");
+	                                        System.out.println("Pratica Atividade fï¿½sica atualmente?");
 	                                        String atividadef;
 	                                        atividadef = ler.nextLine();
 	 
@@ -132,20 +134,43 @@ public class Principal {
 	                                        String medicamento;
 	                                        medicamento = ler.nextLine();
 	 
-	                                        System.out.println("Já passou por alguma cirurgia?");
+	                                        System.out.println("Jï¿½ passou por alguma cirurgia?");
 	                                        String cirurgia;
 	                                        cirurgia = ler.nextLine();
 	 
-	                                        System.out.println("Doença na fámilia?");
-	                                        String doença;
-	                                        doença = ler.nextLine();
+	                                        System.out.println("Doenï¿½a na fï¿½milia?");
+	                                        String doenca;
+	                                        doenca = ler.nextLine();
 	 
-	                                        System.out.println("Observações:");
+	                                        System.out.println("Observaï¿½ï¿½es:");
 	                                        String obs;
 	                                        obs = ler.nextLine();
 	                                        
+	                                        Date dataAtual = new Date();
+	                                        Calendar dataFinal = Calendar.getInstance();
+	                                        dataFinal.setTime(dataAtual);
+	                                        boolean k =true;
+	                                        while(k){
+	                                        	System.out.println("Escolha um plano: \n1 - mensal \n2 - semestral \n3 - anual");
+	                                        	int tipoDePlano = ler.nextInt();
+	                                        	if(tipoDePlano == 1){
+	                                        		//plano mensal
+	                                        		dataFinal.set(Calendar.MONTH, dataFinal.get(Calendar.MONTH)+2);
+	                                        		k = false;
+	                                        	}else if(tipoDePlano == 2){
+	                                        		//Plano semestral
+	                                        		dataFinal.set(Calendar.MONTH, dataFinal.get(Calendar.MONTH)+7);
+	                                        		k = false;
+	                                        	}else if(tipoDePlano == 3){
+	                                        		//plano anual
+	                                        		dataFinal.set(Calendar.MONTH, dataFinal.get(Calendar.MONTH)+13);
+	                                        		k = false;
+	                                        	}else{
+	                                        		System.out.println("Opï¿½ï¿½o indisponivel!");
+	                                        	}
+	                                        }
 	 
-	                                        System.out.println("\n\n--CADASTRO CLIENTE (Avaliação Física)-- \nRISCOS CORONARIANO\n\nIdade:");
+	                                        System.out.println("\n\n--CADASTRO CLIENTE (Avaliaï¿½ï¿½o Fï¿½sica)-- \nRISCOS CORONARIANO\n\nIdade:");
 	                                        int idade1;
 	                                        idade1 = ler.nextInt();
 	 
@@ -159,11 +184,11 @@ public class Principal {
 	                                        peso = ler.nextFloat();
 	 
 	                                        ler.nextLine();
-	                                        System.out.println("Exercício Físico:");
+	                                        System.out.println("Exercï¿½cio Fï¿½sico:");
 	                                        String exercicioF;
 	                                        exercicioF = ler.nextLine();
 	 
-	                                        System.out.println("Histórico Famíliar:");
+	                                        System.out.println("Histï¿½rico Famï¿½liar:");
 	                                        String historicoF;
 	                                        historicoF = ler.nextLine();
 	 
@@ -171,14 +196,14 @@ public class Principal {
 	                                        String tabagismo;
 	                                        tabagismo = ler.nextLine();
 	 
-	                                        System.out.println("Observações:");
+	                                        System.out.println("Observaï¿½ï¿½es:");
 	                                        String obs2;
 	                                        obs2 = ler.nextLine();
 	                                        
 	                                        Login login = new Login (usuario, senha);
 	 
 	                                        Avaliacao avaliacao = new Avaliacao(objetivo, atividadef,
-	                                                        medicamento, cirurgia, doença, obs, idade1, sexo,
+	                                                        medicamento, cirurgia, doenca, obs, idade1, sexo,
 	                                                        peso, exercicioF, historicoF, tabagismo, obs2);
 	 
 	                                        Cliente cliente = new Cliente(nome, endereco, idade, cpf,
@@ -203,7 +228,7 @@ public class Principal {
 	                                 
 	                                        break;
 	                                case 2:// Remover Cliente
-	                                        System.out.println("Digite CPF do cliente que você deseja remover");
+	                                        System.out.println("Digite CPF do cliente que vocï¿½ deseja remover");
 	                                        long cpf1;
 	                                        cpf1 = ler.nextLong();
 	 
@@ -212,17 +237,20 @@ public class Principal {
 	                                        break;
 	 
 	                                case 3:// Exibir Cliente
-	                                        System.out.println("Digite CPF do cliente que você deixar exibir os dados");
+	                                        System.out.println("Digite CPF do cliente que vocï¿½ deixar exibir os dados");
 	                                        long cpf2;
 	                                        cpf2 = ler.nextLong();
 	 
 	                                        System.out.println(cadastroCliente.procurarCliente(cpf2));
 	 
 	                                        break;
-	                               
+	                                case 4:
+	                                	System.out.println("Digite CPF do Cliente: ");
+	                                	
+	                                	break;
 	 
 	                                default:
-	                                        System.out.println("Opção inválda");
+	                                        System.out.println("Opï¿½ï¿½o invï¿½lda");
 	                                        break;
 	 
 	                                }
@@ -272,7 +300,7 @@ public class Principal {
 		                                
 		                                        break;
 		                                case 2:
-		                                        System.out.println("Digite o CPF do Treinador que você deseja remover");
+		                                        System.out.println("Digite o CPF do Treinador que vocï¿½ deseja remover");
 		                                        long cpfT;
 		                                        cpfT = ler.nextLong();
 		                                        		                                        
@@ -283,7 +311,7 @@ public class Principal {
 		                                        break;
 		                                case 3:
 		                                       
-		                                        System.out.println("Digite o CPF Treinador que você deseja exibir");
+		                                        System.out.println("Digite o CPF Treinador que vocï¿½ deseja exibir");
 		                                        long cpfT2;
 		                                        cpfT2 = ler.nextLong();
 		                                        System.out.println(cadastroTreinador.procurarTreinador(cpfT2));
@@ -319,7 +347,7 @@ public class Principal {
 	                            		System.out.println("Nome da aula: ");
 	                            		nomeAula = ler.nextLine();
 	                            	
-	                            		System.out.println("Dia da semana que a aula será realizada: ");
+	                            		System.out.println("Dia da semana que a aula serï¿½ realizada: ");
 	                            		String diaAula =ler.nextLine();
 	                            		
 	                            		System.out.println("Digite a hora da aula: ");
@@ -346,7 +374,7 @@ public class Principal {
 	                                	if(aulaRemover != null){
 	                                		//cadastroAula.removerCliente(nomeAulaRemover);
 	                                	}else{
-	                                		System.out.println("Aula não encontrada");
+	                                		System.out.println("Aula nï¿½o encontrada");
 	                                	}
 	                                        break;
 	                                	
@@ -372,12 +400,33 @@ public class Principal {
 	                                }
 	                                } while (opcao4 != 0);
 	                                	break;
-                               
+                                case 4:
+	                                	
+                               /* Calendar dataHoje = Calendar.getInstance();
+                                Cliente clienteExibirMensalidade[];
+                                //clienteExibirMensalidade = cadastroCliente.exibir();
+  
+                        		int i = 0;
+                     		dataHoje = Calendar.getInstance();
+                     		Calendar dataHojeMaisUmMes = Calendar.getInstance();
+                     		dataHojeMaisUmMes.set(Calendar.MONTH, dataHojeMaisUmMes.get(Calendar.MONTH +6));
+                     		System.out.println("Clientes proximos a vencer o plano: ");
+                     		
+                     		while (clienteExibirMensalidade[i] != null) {
+                     			if(dataHojeMaisUmMes.before(clienteExibirMensalidade[i].getDataFinal())){
+                     				System.out.println("Nome do cliente: "+ clienteExibirMensalidade[i].getNome() + "\tData de vencimento: " + clienteExibirMensalidade[i].getDataFinal().get(Calendar.DAY_OF_MONTH) + "/" + clienteExibirMensalidade[i].getDataFinal().get(Calendar.MONTH) + "/" + clienteExibirMensalidade[i].getDataFinal().get(Calendar.YEAR));
+                     				i++;
+                     			}else{
+                     				i++;
+                     			}
+                     		}*/
+                     		
+                     		break;
 	                   
                      		
                         default:
  
-                                System.out.println("Opção é invalida");
+                                System.out.println("Opï¿½ï¿½o ï¿½ invalida");
                                 break;
                         }
                         
@@ -389,7 +438,7 @@ public class Principal {
 
             	int opcao3; 
                 do{
-                    System.out.println("0- Voltar \n1-Exibir Treino \n2- Aulas extras ");
+                    System.out.println("0- Voltar \n1-Exibir Treino \n2- TOP 10 (Melhores Clientes) ");
                     opcao3 = ler.nextInt();
                     switch (opcao3) {// Menu Administrar Cliente - 2
                     case 0:
@@ -422,14 +471,14 @@ public class Principal {
                             
 
                             break;
-                    case 2://  exibe Aulas Extras // FAZER
+                    case 2://  exibe lista do TOP 10
                             
                             break;
 
                     
 
                     default:
-                            System.out.println("Opção inválda");
+                            System.out.println("Opï¿½ï¿½o invï¿½lda");
                             break;
 
                     }
@@ -485,14 +534,14 @@ public class Principal {
                     
                             break;
                
-                    case 2://  lista de Alunos //FAZER
+                    case 2://  exibe lista do TOP 10
                             
                             break;
 
                     
 
 					default:
-						System.out.println("Opção inválda");
+						System.out.println("Opï¿½ï¿½o invï¿½lda");
                             break;
 
                     }

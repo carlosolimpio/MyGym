@@ -1,5 +1,6 @@
 package negocios;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import classesBasicas.Administrador;
@@ -10,7 +11,6 @@ import classesBasicas.Treinador;
 import classesBasicas.Treino;
 import excecoes.ObjetoJaExisteException;
 import excecoes.ObjetoNaoExisteException;
-import excecoes.SenhaNaoExisteException;
 import excecoes.UsuarioJaExisteException;
 import excecoes.UsuarioOuSenhaIncorretosException;
 
@@ -26,7 +26,7 @@ public class MyGymFachada implements IMyGymFachada{
 	private CadastroPessoa cadastroPessoa;
 	private CadastroAdministrador cadastroAdministrador;
 	
-	public MyGymFachada(){
+	public MyGymFachada() throws SQLException {
 		cadastroCliente = new CadastroCliente();
 		cadastroAula = new CadastroAula();
 		cadastroTreinador = new CadastroTreinador();
@@ -36,7 +36,7 @@ public class MyGymFachada implements IMyGymFachada{
 		
 	}
 	
-	 public static MyGymFachada getInstance() {
+	 public static MyGymFachada getInstance() throws SQLException {
 	    	if (instance == null) {
 				instance = new MyGymFachada();
 			}

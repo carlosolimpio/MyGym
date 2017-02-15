@@ -1,4 +1,4 @@
-drop database mygym;
+#drop database mygym;
 create database mygym;
 use mygym;
 

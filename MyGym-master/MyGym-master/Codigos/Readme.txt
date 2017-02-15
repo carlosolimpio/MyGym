@@ -1,1 +1,0 @@
-Esta pasta é de uso exclusivo para os códigos do software.

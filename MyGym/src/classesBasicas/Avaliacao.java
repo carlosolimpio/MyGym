@@ -8,7 +8,7 @@ public class Avaliacao implements Serializable{
 	private String praticaExercicio;
 	private String medicamento;
 	private String estadoCirurgia;
-	private String doençaFamiliar;
+	private String doencaFamiliar;
 	private String observacoes;
 
 	// Coronariano
@@ -21,7 +21,7 @@ public class Avaliacao implements Serializable{
 	private String observacoes2;
 
 	public Avaliacao(String objetivo, String praticaExercicio,
-			String medicamento, String estadoCirurgia, String doençaFamiliar,
+			String medicamento, String estadoCirurgia, String doencaFamiliar,
 			String observacoes, int idade, String sexo, double peso,
 			String exercicioFisico, String historicoFamiliar, String tabagismo,
 			String observacoes2) {
@@ -30,7 +30,7 @@ public class Avaliacao implements Serializable{
 		setPraticaExercicio(praticaExercicio);
 		setMedicamento(medicamento);
 		setEstadoCirurgia(estadoCirurgia);
-		setDoençaFamiliar(doençaFamiliar);
+		setDoencaFamiliar(doencaFamiliar);
 		setObservacoes(observacoes2);
 		setIdade(idade);
 		setSexo(sexo);
@@ -58,8 +58,8 @@ public class Avaliacao implements Serializable{
 		this.estadoCirurgia = estadoCirurgia;
 	}
 
-	public void setDoençaFamiliar(String doençaFamiliar) {
-		this.doençaFamiliar = doençaFamiliar;
+	public void setDoencaFamiliar(String doencaFamiliar) {
+		this.doencaFamiliar = doencaFamiliar;
 	}
 
 	public void setObservacoes(String observacoes) {
@@ -111,8 +111,8 @@ public class Avaliacao implements Serializable{
 		return estadoCirurgia;
 	}
 
-	public String getDoençaFamiliar() {
-		return doençaFamiliar;
+	public String getDoencaFamiliar() {
+		return doencaFamiliar;
 	}
 
 	public String getObservacoes() {
@@ -145,18 +145,18 @@ public class Avaliacao implements Serializable{
 
 	public String toString() {
 
-		return "ANAMNESE\n\n" + "Objetivos relação à atividade física?\n"
-				+ this.objetivo + "\nPratica Atividade física atualmente?\n"
+		return "ANAMNESE\n\n" + "Objetivos relaï¿½ï¿½o ï¿½ atividade fï¿½sica?\n"
+				+ this.objetivo + "\nPratica Atividade fï¿½sica atualmente?\n"
 				+ this.praticaExercicio
 				+ "\nUtiliza algum tipo de medicamento?\n " + this.medicamento
-				+ "\nJá passou por alguma cirurgia?\n" + this.estadoCirurgia
-				+ "\nDoença na fámilia?\n" + this.doençaFamiliar
-				+ "\nObservações:\n" + this.observacoes
+				+ "\nJï¿½ passou por alguma cirurgia?\n" + this.estadoCirurgia
+				+ "\nDoenï¿½a na fï¿½milia?\n" + this.doencaFamiliar
+				+ "\nObservaï¿½ï¿½es:\n" + this.observacoes
 				+ "\n\nRISCOS CORONARIANO\n\n" + "Idade:\n" + this.idade
 				+ "\nSexo:\n" + this.sexo + "\nPeso:\n" + this.peso
-				+ "\nExercício Físico:\n" + this.exercicioFisico
-				+ "\nHistórico Familiar\n" + this.historicoFamiliar
-				+ "\nTabagismo:\n" + this.tabagismo + "\nObservações\n"
+				+ "\nExercï¿½cio Fï¿½sico:\n" + this.exercicioFisico
+				+ "\nHistï¿½rico Familiar\n" + this.historicoFamiliar
+				+ "\nTabagismo:\n" + this.tabagismo + "\nObservaï¿½ï¿½es\n"
 				+ this.observacoes2;
 	}
 

@@ -15,7 +15,8 @@ import dados.RepositorioPessoa;
 import excecoes.ObjetoNaoExisteException;
 import excecoes.SenhaNaoExisteException;
 import excecoes.UsuarioOuSenhaIncorretosException;
-
+import gui.PainelAdministrador;
+import gui.PainelCliente;
 
 public class CadastroPessoa {
 	

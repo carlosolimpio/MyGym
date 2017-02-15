@@ -1,11 +1,12 @@
 package negocios;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 
-import classesBasicas.Cliente;
+import com.mysql.jdbc.Connection;
+
 import classesBasicas.Treinador;
+import dados.Conexao;
 import dados.IRepositorioTreinador;
-import dados.RepositorioCliente;
 import dados.RepositorioTreinador;
 import excecoes.ObjetoJaExisteException;
 import excecoes.ObjetoNaoExisteException;
@@ -15,12 +16,12 @@ import excecoes.UsuarioJaExisteException;
 	public class CadastroTreinador {
 
 		private static IRepositorioTreinador repositorioTreinador;
+		Connection conexao;
 
-
-		public CadastroTreinador() {
+		public CadastroTreinador() throws SQLException{
 			this.repositorioTreinador = RepositorioTreinador.getInstance();
+			this.conexao = Conexao.getConexao();
 		}
-		
 		
 		public void removerTreinador(Long cpf) throws ObjetoNaoExisteException{
 			Treinador t = repositorioTreinador.procurar(cpf);
@@ -79,6 +80,26 @@ import excecoes.UsuarioJaExisteException;
 			}
 			
 		
+	}
+		
+	/*---------------------------BANCO DE DADOS--------------------------------*/
+	
+	public void bcCadastraTreinador(Treinador treinador) throws SQLException, IllegalArgumentException, UsuarioJaExisteException, ObjetoJaExisteException{
+		if (treinador == null) {
+			throw new IllegalArgumentException("Parametro invalido");
+		} else if(CadastroPessoa.loginExiste(treinador.getLogin())){
+			throw new UsuarioJaExisteException(treinador.getLogin());
+		}else {
+			Treinador treinadorRetornar;
+
+			treinadorRetornar = this.conexao.bdProcurar(treinador.getCpf());
+
+			if (treinadorRetornar == null) {
+				repositorioTreinador.bdCadastrar(treinador, conexao);
+			} else {
+				throw new ObjetoJaExisteException(treinador);
+			}
+		}
 	}
 		
 		
