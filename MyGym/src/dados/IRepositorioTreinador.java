@@ -19,4 +19,10 @@ public interface IRepositorioTreinador {
 	
 	void bdCadastrar(Treinador treinador, Connection conexao) throws SQLException;
 	
+	void bdRemover(long cpf, Connection conexao) throws SQLException;
+	
+	Treinador bdProcurar(long cpf, Connection conexao) throws SQLException;
+	
+	void bdAtualizar(long cpf, Treinador novo, Connection conexao) throws SQLException;
+	
 }

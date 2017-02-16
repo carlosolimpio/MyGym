@@ -14,18 +14,24 @@ create table Pessoa (
     login_pessoa varchar(15) not null,
     constraint pessoa_pk primary key(cpf),
     constraint pessoa_login_fk foreign key(login_pessoa) references Login(login) 
+    on delete cascade 
+    on update cascade
 );
 
 create table Administrador (
 	cpf_administrador varchar(12) not null,
     constraint cpf_admin_pk primary key(cpf_administrador),
     constraint cpf_admin_fk foreign key(cpf_administrador) references Pessoa(cpf)
+    on delete cascade 
+    on update cascade
 );
 
 create table Treinador (
 	cpf_treinador varchar(12) not null,
     constraint cpf_treinador_pk primary key(cpf_treinador),
     constraint cpf_treinador_fk foreign key(cpf_treinador) references Pessoa(cpf)
+    on delete cascade 
+    on update cascade
 );
 
 create table Avaliacao (
@@ -60,6 +66,8 @@ create table Cliente (
     constraint cpf_cliente_fk foreign key(cpf_cliente) references Pessoa(cpf),
     constraint id_avaliacao_cli_fk foreign key(id_avaliacao_cli) references Avaliacao(id_avaliacao),
     constraint cpf_treinador_cli_fk foreign key(cpf_treinador_cli) references Treinador(cpf_treinador)
+    on delete cascade 
+    on update cascade
 );
 
 create table Aula (
@@ -76,4 +84,6 @@ create table Treino (
     cpf_cliente_treino varchar(12) not null,
     constraint nomeDoTreino_pk primary key(nomeDoTreino),
     constraint cpf_cliente_treino_fk foreign key(cpf_cliente_treino) references Cliente(cpf_cliente)
+    on delete cascade 
+    on update cascade
 );
